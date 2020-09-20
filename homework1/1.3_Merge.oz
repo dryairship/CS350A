@@ -1,8 +1,3 @@
-%%%%%%%%%%%%%% Attempt 1 %%%%%%%%%%%%%
-%%% Cons: Not tail recursive
-%%% Pros: Shorter code
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-/*
 declare
 fun {Merge As Bs}
     case As#Bs
@@ -14,36 +9,6 @@ fun {Merge As Bs}
         then As.1 | {Merge As.2 Bs}
         else Bs.1 | {Merge As Bs.2}
         end
-    end
-end
-*/
-
-%%%%%%%%%%%%%% Attempt 2 %%%%%%%%%%%%%
-%%% Pros: Tail recursive
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-declare
-fun {Merge As Bs}
-    local MergeTR InvertTR in
-        fun {InvertTR Xs Ys}
-            case Xs
-            of nil then Ys
-            [] H|T then {InvertTR H T|Ys}
-            end
-        end
-        fun {MergeTR As Bs Ys}
-            case As#Bs
-            of nil#nil then Ys
-            [] Xs#nil then {MergeTR Xs.2 nil Ys|Xs.1}
-            [] nil#Xs then {MergeTR Xs.2 nil Ys|Xs.1}
-            else
-                if As.1 =< Bs.1
-                then {MergeTR As.2 Bs Ys|As.1}
-                else {MergeTR As Bs.2 Ys|Bs.1}
-                end
-            end
-        end
-        {InvertTR {MergeTR As Bs nil} nil}
     end
 end
 
