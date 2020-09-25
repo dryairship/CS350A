@@ -1,4 +1,6 @@
 declare
+
+% X needs to be a floating point number
 fun lazy {TaylorSin X}
     local AuxillaryTaylorSin in
         fun lazy {AuxillaryTaylorSin N CurrentTerm}

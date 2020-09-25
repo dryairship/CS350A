@@ -16,7 +16,7 @@ end
 % answer returned by the function is 
 % Ans = s(1)+s(2)+s(3)+...+s(i)+s(i+1)
 % If the sum required is s(1)+s(2)+s(3)+...+s(i),
-% then on line 22, S.1+S.2.1 can be changed to S.1
+% then on line 23, S.1+S.2.1 can be changed to S.1
 
 fun {Approximate S Epsilon}
     if {Abs S.1-S.2.1} =< Epsilon

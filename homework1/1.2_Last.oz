@@ -4,16 +4,14 @@ fun {Last Xs N}
         fun {Length Xs}
             case Xs
             of nil then 0
-            else 1 + {Length Xs.2}
+            [] _|T then 1 + {Length T}
             end
         end
         fun {Drop Xs N}
-            case Xs
-            of nil then nil
-            else
-                if N =< 0 then Xs
-                else {Drop Xs.2 N-1}
-                end
+            case Xs#(N=<0)
+            of nil#_ then nil
+            [] _#true then Xs
+            [] (_|T)#_ then {Drop T N-1}
             end
         end
         {Drop Xs {Length Xs}-N}
