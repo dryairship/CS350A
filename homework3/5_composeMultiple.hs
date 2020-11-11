@@ -1,6 +1,5 @@
 compose_multiple :: [b -> b] -> b -> b
-compose_multiple [] a = a
-compose_multiple (x:xs) a = x $ compose_multiple xs a
+compose_multiple fs a = foldr (.) id fs a
 
 main :: IO ()
 main = do
